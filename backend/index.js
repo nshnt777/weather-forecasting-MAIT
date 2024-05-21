@@ -10,8 +10,14 @@ const apiKey = "16c4c78266a7343d3cd9e75b95ee98e1";
 let country_code = "IN";
 let city_name = "Delhi";
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://weather-forecasting-app-gold.vercel.app');
+  next();
+});
 app.use(express.json());
 app.use(cors());
+
+
 app.get('/api/weather', async (req, res) => {
     try {
         let place = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city_name},${country_code}&limit=1&appid=${apiKey}`);
