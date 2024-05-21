@@ -11,7 +11,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:3001/api/weather')
+    axios.get('https://weather-forecasting-mait.vercel.app/api/weather')
       .then((result) => {
         setWeatherData(result.data);
       })
@@ -105,7 +105,7 @@ function SearchBar() {
   async function handleSearch(e) {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://127.0.0.1:3001/api/search`, {
+      const response = await axios.post(`https://weather-forecasting-mait.vercel.app/api/search`, {
         search: _.capitalize(searchInput)
       });
 
